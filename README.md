@@ -16,8 +16,7 @@ The data for each states includes : <br>
 
 The data set is based on 2014 ACS 1-year estimates: [https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml](https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml)
 <br>
-### Interactive D3 Graph
-<img align="right" src="Images/Screenshot.png" width="50%"><br>
+### Interactive D3 Graph   <img align="right" src="Images/Screenshot.png" width="50%"><br>
 Using the D3 techniques, we decided to create a scatter plot between two sets of the data variables (healthcare, obesity, and smoker, and poverty, median age and medium income, which gave the users ability to choose which data set that they wanted to see. The graph has `Healthcare vs. Poverty` as its initial variables, with each state represented by circle elements. <br>
 The graph includes <br>
 - state abbreviations in the circles as identifiers.
