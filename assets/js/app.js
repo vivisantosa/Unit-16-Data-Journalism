@@ -1,11 +1,12 @@
 /* UofT SCS Data Analytics Boot Camp
-  13-D3 Assignment
+  Unit 15 - D3 Assignment
   Filename: app.js
   Author:   Vivianti Santosa
   Date:     2020-09-12
 */
+console.log("Unit 15 - Data Journalism and D3 Assignment")
 // Create a container for the chart ------------------------------------------------
-var svgWidth = 960;
+var svgWidth = 800;
 var svgHeight = 500;
 
 var margin = {
@@ -87,7 +88,7 @@ function renderCircles(circlesGroup, newXScale, chosenXAxis, newYScale, chosenYA
 function renderCirclesText(circlesText, newXScale, chosenXAxis, newYScale, chosenYAxis) {
   circlesText.transition()
     .duration(1000)
-    .attr("x", d => newXScale(d[chosenXAxis])-10)
+    .attr("x", d => newXScale(d[chosenXAxis]))
     .attr("y", d => newYScale(d[chosenYAxis])+5);
 
   return circlesText;
@@ -109,7 +110,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     var yLabel = "Smoke:";} 
 
   var toolTip = d3.tip()
-    .attr("class", "tooltip")
+    .attr("class", "d3-tip")
     .offset([80, -60])
     .html(function(d) {
       return (`${d.state}<br>${yLabel} ${d[chosenYAxis]}<br>${xLabel} ${d[chosenXAxis]}`);
@@ -130,9 +131,9 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
 
   return circlesGroup;
 }
-
+// ---------------------------------------------------------------------------------
 // Retrieve data from the CSV file and execute everything below --------------------
-d3.csv("data.csv").then(function(censusData, err) {
+d3.csv("../data/data.csv").then(function(censusData, err) {
   if (err) throw err;
 
   console.log("data")
@@ -180,20 +181,18 @@ d3.csv("data.csv").then(function(censusData, err) {
     .attr("cy", d => yLinearScale(d[chosenYAxis]))
     .attr("r", 20)
     .classed("stateCircle", true)
-    .attr("opacity", (d => d.healthcare/100));
+    //.attr("opacity", (d => d.healthcare/100));
     //.attr("fill", "green")
     //circlesGroup.append("text").text(d => d.abbr);
 
- 
-
-  // append initial circle labels
+    // append initial circle labels
   var circlesTextGroup= chartGroup.append("g")
 
   var circlesText = circlesTextGroup.selectAll("text")
     .data(censusData)
     .enter()
     .append("text")
-    .attr("x", d => xLinearScale(d[chosenXAxis])-10)
+    .attr("x", d => xLinearScale(d[chosenXAxis]))
     .attr("y", d => yLinearScale(d[chosenYAxis])+5)
     .text(d => d.abbr)
     .classed("stateText", true);
@@ -301,7 +300,7 @@ d3.csv("data.csv").then(function(censusData, err) {
   var healthcareLabel = YlabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0)
-    .attr("y", -865)
+    .attr("y", -725)
     .attr("value", "healthcare") // value to grab for event listener
     .classed("active", true)
     .text("Healthcare");
@@ -309,7 +308,7 @@ d3.csv("data.csv").then(function(censusData, err) {
   var obesityLabel = YlabelsGroup.append("text")
     .attr("transform", "rotate(-90)")  
     .attr("x", 0)
-    .attr("y", -885)
+    .attr("y", -745)
     .attr("value", "obesity") // value to grab for event listener
     .classed("inactive", true)
     .text("Obesity");
@@ -317,7 +316,7 @@ d3.csv("data.csv").then(function(censusData, err) {
   var smokesLabel = YlabelsGroup.append("text")
     .attr("transform", "rotate(-90)")
     .attr("x", 0)
-    .attr("y", -905)
+    .attr("y", -765)
     .attr("value", "smokes") // value to grab for event listener
     .classed("inactive", true)
     .text("Smoker");
