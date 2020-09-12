@@ -1,6 +1,8 @@
 # Data-Journalism <br>
 <img src="https://d3js.org/preview.png" width="1080"><br>
-
+<br>
+https://vivisantosa.github.io/Unit-16-Data-Journalism/index.html
+<br>
 ## Unit - 16 Data Journalism And D3
 Exploration in d3, data mining, and graph creation <br>
 <br>
