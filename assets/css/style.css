@@ -13,13 +13,13 @@ body {
   /* Padding bottom by footer height */
   padding-bottom: 80px;
 }
+.scatter{
+  width: auto;
+}
 h2{
   padding-top: 20px;
-  font-size: 20pt;
 }
-p{
-  text-align: justify;
-}
+
 #article{
   padding-left: 20px;
 }
